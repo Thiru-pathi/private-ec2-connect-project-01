@@ -1,4 +1,4 @@
-name: Debug OIDC
+name: OIDC Debug
 
 on:
   workflow_dispatch:
@@ -12,20 +12,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get OIDC token claims
-        shell: bash
-        run: |
-          TOKEN_JSON=$(curl -s \
-            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com")
-
-          ID_TOKEN=$(echo "$TOKEN_JSON" | jq -r '.value')
-
-          PAYLOAD=$(echo "$ID_TOKEN" | cut -d '.' -f2)
-
-          echo "$PAYLOAD" | base64 -d 2>/dev/null | jq '{
-            sub: .sub,
-            aud: .aud,
-            repository: .repository,
-            repository_owner: .repository_owner
-          }'
+      - name: OIDC Debugger
+        uses: github/actions-oidc-debugger@main
