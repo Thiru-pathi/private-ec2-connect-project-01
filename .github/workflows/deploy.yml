@@ -34,7 +34,8 @@ jobs:
             --instance-ids i-0e9c6d52b44180434 \
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
-              "sudo systemctl status nginx",
-              "echo Deployment started",
-              "sudo systemctl reload nginx"
+              "cd /var/www/html", 
+              "if [ -d .git ]; then sudo git pull origin main; else sudo git clone https://github.com/Thiru-pathi/private-ec2-connect-project-01.git /var/www/html; fi", 
+              "sudo chown -R nginx:ngin /var/www/html",
+              "sudo systemctl reload nginx", "echo Deployment completed"
             ]'
