@@ -35,6 +35,7 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
               "cd /var/www/html", 
-              "git clone https://github.com/Thiru-pathi/private-ec2-connect-project-01.git",
+              #"git clone https://github.com/Thiru-pathi/private-ec2-connect-project-01.git",
+              "git pull origin main",
               "clone completed"
             ]'
