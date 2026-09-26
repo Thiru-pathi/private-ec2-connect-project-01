@@ -21,7 +21,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::<684210808108>:role/github-actions-ROLE
+          role-to-assume: arn:aws:iam::684210808108:role/github-actions-ROLE
           aws-region: ap-south-1
 
       - name: Deploy using SSM
