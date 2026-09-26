@@ -24,6 +24,10 @@ jobs:
           role-to-assume: arn:aws:iam::684210808108:role/github-actions-ROLE
           aws-region: ap-south-1
 
+      - name: Check AWS identity
+        run: |
+          aws sts get-caller-identity    
+
       - name: Deploy using SSM
         run: |
           aws ssm send-command \
